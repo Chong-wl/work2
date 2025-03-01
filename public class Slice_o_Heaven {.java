@@ -72,10 +72,7 @@ public class Slice_o_Heaven {
             System.out.println("Order is ready for pickup!");
         }
 
-        System.out.println("Your order is ready!");
-
-    
-
+        System.out.println("Your order is ready!")
 
     }
     public void makepizza(String id, String details, double ordertotal){
@@ -99,4 +96,31 @@ public class Slice_o_Heaven {
         System.out.println("Order Total: " + orderTotal);
     }
     
+}
+public void processCardPayment(String cardNumber, String expiryDate, int cvv) {
+    int cardLength = cardNumber.length();
+    if (cardLength == 14) {
+        System.out.println("Card accepted");
+    } else {
+        System.out.println("Invalid card");
+    }
+
+    int firstCardDigit = Integer.parseInt(cardNumber.substring(0, 1));
+
+    String blacklistedNumber = "12345678901234"; 
+    if (cardNumber.equals(blacklistedNumber)) {
+        System.out.println("Card is blacklisted. Please use another card");
+    }
+
+    int lastFourDigits = Integer.parseInt(cardNumber.substring(cardNumber.length() - 4));
+
+    String cardNumberToDisplay = cardNumber.charAt(0) + cardNumber.substring(1, cardNumber.length() - 4).replaceAll(".", "*") + cardNumber.substring(cardNumber.length() - 4);
+    System.out.println("Display Card Number: " + cardNumberToDisplay);
+}
+
+
+public void specialOfTheDay(String pizzaOfTheDay, String sideOfTheDay, String specialPrice) {
+    String info = "Today's Special - Pizza: " + pizzaOfTheDay + ", Side: " + sideOfTheDay + ", Price: " + specialPrice;
+    System.out.println(info);
+}
 }
